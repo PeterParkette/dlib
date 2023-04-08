@@ -7,7 +7,7 @@ from pytest import raises
 
 
 def test_range():
-    r = range(0, 10)
+    r = range(10)
     assert r.begin == 0
     assert r.end == 10
     assert str(r) == "0, 10"
@@ -28,7 +28,7 @@ def test_range_wrong_order():
     assert r.end == 0
     assert str(r) == "5, 0"
     assert repr(r) == "dlib.range(5, 0)"
-    assert len(r) == 0
+    assert not r
 
 
 def test_range_with_negative_elements():
