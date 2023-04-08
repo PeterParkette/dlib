@@ -33,8 +33,7 @@ def test_chinese_whispers_with_distance():
     edges = []
     r = Random(0)
     for i in range(100):
-        edges.append((i, i, 1))
-        edges.append((i, r.randint(0, 99), r.random()))
+        edges.extend(((i, i, 1), (i, r.randint(0, 99), r.random())))
     assert len(chinese_whispers(edges)) == 100
 
 

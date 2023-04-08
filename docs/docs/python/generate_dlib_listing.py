@@ -22,15 +22,17 @@ def make_listing_files():
     for obj in dir(_dlib_pybind11):
         if obj[0] == '_':
             continue
-        print_element('_dlib_pybind11.'+obj, fc, ff, fconstants)
+        print_element(f'_dlib_pybind11.{obj}', fc, ff, fconstants)
 
     for obj in dir(_dlib_pybind11.cuda):
         if obj[0] == '_':
             continue
-        print_element('_dlib_pybind11.cuda.'+obj, fc, ff, fconstants)
+        print_element(f'_dlib_pybind11.cuda.{obj}', fc, ff, fconstants)
 
     for obj in dir(_dlib_pybind11.image_dataset_metadata):
         if obj[0] == '_':
             continue
-        print_element('_dlib_pybind11.image_dataset_metadata.'+obj, fc, ff, fconstants)
+        print_element(
+            f'_dlib_pybind11.image_dataset_metadata.{obj}', fc, ff, fconstants
+        )
 

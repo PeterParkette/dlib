@@ -68,7 +68,7 @@ win = dlib.image_window()
 
 # Now process all the images
 for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")):
-    print("Processing file: {}".format(f))
+    print(f"Processing file: {f}")
     img = dlib.load_rgb_image(f)
 
     win.clear_overlay()
@@ -78,12 +78,13 @@ for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")):
     # second argument indicates that we should upsample the image 1 time. This
     # will make everything bigger and allow us to detect more faces.
     dets = detector(img, 1)
-    print("Number of faces detected: {}".format(len(dets)))
+    print(f"Number of faces detected: {len(dets)}")
 
     # Now process each face we found.
     for k, d in enumerate(dets):
-        print("Detection {}: Left: {} Top: {} Right: {} Bottom: {}".format(
-            k, d.left(), d.top(), d.right(), d.bottom()))
+        print(
+            f"Detection {k}: Left: {d.left()} Top: {d.top()} Right: {d.right()} Bottom: {d.bottom()}"
+        )
         # Get the landmarks/parts for the face in box d.
         shape = sp(img, d)
         # Draw the face landmarks on the screen so we can see what face is currently being processed.
@@ -124,14 +125,14 @@ for f in glob.glob(os.path.join(faces_folder_path, "*.jpg")):
         # Here is a sample usage of that
 
         print("Computing descriptor on aligned image ..")
-        
+
         # Let's generate the aligned image using get_face_chip
         face_chip = dlib.get_face_chip(img, shape)        
 
         # Now we simply pass this chip (aligned image) to the api
-        face_descriptor_from_prealigned_image = facerec.compute_face_descriptor(face_chip)                
+        face_descriptor_from_prealigned_image = facerec.compute_face_descriptor(face_chip)
         print(face_descriptor_from_prealigned_image)        
-        
+
         dlib.hit_enter_to_continue()
 
 
